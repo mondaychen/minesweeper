@@ -1,0 +1,30 @@
+{
+  "name": "Monday's Minesweeper",
+  "version": "0.0.1",
+  "description": "A html version of the classic game \"Minesweeper\"",
+  "author": {
+    "name": "mondaychen",
+    "email": "monday.chen@gmail.com",
+    "url": "http://github.com/mondaychen"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-stylus": "~0.10.0",
+    "grunt-ozjs": "~0.4.2"
+  },
+  "dependencies": {
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "game",
+    "JavaScript"
+  ]
+}

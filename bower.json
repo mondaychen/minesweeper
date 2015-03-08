@@ -1,0 +1,33 @@
+{
+  "name": "Monday's Minesweeper",
+  "version": "0.0.1",
+  "authors": [
+    "mondaychen <monday.chen@gmail.com>"
+  ],
+  "description": "A html version of the famous game \"Minesweeper\"",
+  "main": "index.html",
+  "keywords": [
+    "html5",
+    "css3",
+    "game",
+    "JavaScript"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "backbone": "~1.1.2",
+    "ozjs": "~2.6.3",
+    "normalize-css": "~3.0.0",
+    "modernizr": "~2.7.1",
+    "bowser": "~0.5.0",
+    "magnific-popup": "~0.9.9"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

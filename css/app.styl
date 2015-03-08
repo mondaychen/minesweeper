@@ -1,0 +1,107 @@
+@import "nib"
+@import "normalize-css/normalize.css"
+@import "magnific-popup/dist/magnific-popup.css"
+
+@font-face
+  font-family: 'Signika';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Signika'), local('Signika-Regular'), url('../font/Signika.woff') format('woff');
+
+html
+  font-family: 'Signika', 'Comic Sans MS', 'PT Sans', 'Eras Light ITC', Helvetica, Arial, sans-serif;
+  font-size: 100px
+
+$blue = #66ccff
+$pink = #ff6881
+$gray = #777e8c
+
+body
+  color: $gray
+  font-size: 16px
+
+a:link, a:visited
+  text-decoration: none
+  color: $blue
+a:hover
+  transition: color 0.2s
+  color: $pink
+
+button
+a.button
+  background: $blue
+  border-radius: .10rem
+  border: none
+  color: #fff
+  padding: 5px 10px
+  transition: color 0.1s, background 0.15s
+  text-decoration: none
+  &:hover
+    color: @background
+    background: #fff
+  &.pink
+    background: $pink
+    color: #fff
+    &:hover
+      color: @background
+      background: #fff
+  &.full-size
+    display: inline-block
+    padding: 10px
+    margin: 0 4px
+    font-size: 22px
+    min-width: 100px
+
+.blue
+  color: $blue
+.pink
+  color: $pink
+
+#wrapper
+  max-width: 500px
+  margin: 0 auto
+
+// magnific-popup
+.white-popup
+  position: relative
+  background: #FFF
+  padding: 20px
+  width: auto
+  max-width: 500px
+  margin: 20px auto
+  img
+    max-width: 100%
+  .actions
+    text-align: right
+    margin: 1em 0
+  &.game-over
+    text-align: center
+    .score
+      font-size: 1.5em
+      margin: 0 0.1em 0 0.2em
+  &.playing-menu
+    text-align: center
+    .menu
+      margin-bottom: 30px
+
+.mfp-fade-from-top
+  &.mfp-bg
+    opacity: 0
+    transition: all 0.3s ease-out
+    &.mfp-ready
+      opacity: 0.8
+    &.mfp-removing
+      opacity: 0
+  &.mfp-wrap
+    .mfp-content
+      opacity: 0
+      transform: translateY(-100px);
+      transition: all 0.3s ease-out
+    &.mfp-ready
+      .mfp-content
+        opacity: 1
+        transform: translateY(0px);
+    &.mfp-removing
+      .mfp-content
+        opacity: 0
+        transform: translateY(-100px);
