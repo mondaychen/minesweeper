@@ -2,14 +2,8 @@
 @import "normalize-css/normalize.css"
 @import "magnific-popup/dist/magnific-popup.css"
 
-@font-face
-  font-family: 'Signika';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Signika'), local('Signika-Regular'), url('../font/Signika.woff') format('woff');
-
 html
-  font-family: 'Signika', 'Comic Sans MS', 'PT Sans', 'Eras Light ITC', Helvetica, Arial, sans-serif;
+  font-family: 'Orbitron', 'Bank Gothic', Helvetica, Arial, sans-serif;
   font-size: 100px
 
 $blue = #66ccff
@@ -23,8 +17,8 @@ body
 a:link, a:visited
   text-decoration: none
   color: $blue
-a:hover
   transition: color 0.2s
+a:hover
   color: $pink
 
 button
@@ -58,8 +52,22 @@ a.button
   color: $pink
 
 #wrapper
-  max-width: 500px
   margin: 0 auto
+
+header
+  max-width: 600px
+  margin: 0 auto
+  h1
+    text-align: center
+  ul, li
+    list-style: none
+    padding: 0
+    font-size: 0
+  li
+    width: 33%
+    display: inline-block
+    font-size: 16px
+    text-align: center
 
 // magnific-popup
 .white-popup
