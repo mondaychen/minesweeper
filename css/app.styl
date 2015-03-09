@@ -15,7 +15,9 @@ html
     clear: both
 
 $blue = #66ccff
+$darkBlue = #60aaf1
 $pink = #ff6881
+$pinkDark = #cc547c
 $gray = #777e8c
 
 body
@@ -80,7 +82,7 @@ header
 
 .board
   margin: 20px auto
-  border-top: $blue 1px solid
+  border-top: $darkBlue 1px solid
   border-left: @border-top
 #gaming
   @extend .clearfix
@@ -89,7 +91,7 @@ header
     box-sizing: border-box
     width: 30px
     height: @width
-    border-right: $blue 1px solid
+    border-right: $darkBlue 1px solid
     border-bottom: @border-right
     text-align: center
     line-height: @height

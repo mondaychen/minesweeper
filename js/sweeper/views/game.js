@@ -2,16 +2,25 @@ define([
   'jquery'
 , 'underscore'
 , 'backbone'
-], function($, _, Backbone) {
+, 'sweeper/app'
+, 'sweeper/collections/squares'
+, 'sweeper/views/square'
+], function($, _, Backbone, app, SquaresCollection, SquareView) {
   var MainView = Backbone.View.extend({
     id: 'gaming'
+  , initialize: function() {
+      this.collection = new SquaresCollection()
+    }
   , render: function() {
       return this
     }
   , start: function(options) {
-      for(var i = 0; i < options.rows * options.columns; i++) {
-        this.$el.append('<div class="grid">' +(i%9)+ '</div>')
-      }
+      var self = this
+      this.collection.on('add', function(model, collection) {
+        var view = new SquareView({model: model})
+        self.$el.append(view.render().el)
+      })
+      this.collection.setup(options)
     }
   })
 
