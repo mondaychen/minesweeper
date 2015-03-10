@@ -11,7 +11,7 @@ define([
   , render: function() {
       this.$el.html('<div class="square"></div>')
       this.square = this.$el.find('.square')
-      this.square.html(this.model.get('isMine') ? 'M' : this.model.get('index'))
+      this.square.html(this.model.get('isMine') ? 'M' : this.model.get('number'))
       return this
     }
   })
