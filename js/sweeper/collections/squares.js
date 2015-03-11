@@ -44,8 +44,7 @@ define([
       }
       for (var i = minesArr.length - 1; i >= 0; i--) {
         if(minesArr[i]) {
-          _.each(this.matrix.getNeighbour8(this.matrix.getPosition(i)),
-            function(position) {
+          _.each(this.matrix.getNeighbour8ByIdx(i), function(position) {
             var idx = self.matrix.getIndex(position)
             if(_.isNumber(minesMap[idx])) {
               minesMap[idx]++
@@ -59,7 +58,7 @@ define([
     }
   , getModelByIdx: function(idx) {
       return this.find(function(model) {
-        return model.get('index') == idx
+        return model.get('index') === idx
       })
     }
   })
