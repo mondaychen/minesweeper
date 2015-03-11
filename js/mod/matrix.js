@@ -49,6 +49,12 @@
       }
       return rtn
     }
+  , getNeighbour4ByIdx: function(idx) {
+      return this.getNeighbour4(this.getPosition(idx))
+    }
+  , getNeighbour8ByIdx: function(idx) {
+      return this.getNeighbour8(this.getPosition(idx))
+    }
   , validate: function(i, j) {
       if (i < 0 || i >= this.columns) {
         throw new Error("row index " + i + " out of bounds");

@@ -54,6 +54,14 @@ define([
         }
       }
     }
+  , getModelByPosition: function(position) {
+      return this.getModelByIdx(this.matrix.getIndex(position))
+    }
+  , getModelByIdx: function(idx) {
+      return this.find(function(model) {
+        return model.get('index') == idx
+      })
+    }
   })
 
   return SquaresCollection
