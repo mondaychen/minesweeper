@@ -11,7 +11,7 @@ define([
     , 'contextmenu': 'flag'
     }
   , initialize: function() {
-      this.model.on('change', this.render, this)
+      this.model.on('change', this.update, this)
     }
   , render: function() {
       this.$el.html('<div class="square"></div>')
@@ -24,6 +24,12 @@ define([
         return this._renderMine()
       }
       return this._renderNumber()
+    }
+  , update: function(model) {
+      if("flag" in model.changed && _.size(model.changed)) {
+        return this._makeFlag()
+      }
+      return this.render()
     }
   , open: function() {
       if(this.model.get('isMine')) {
@@ -39,11 +45,13 @@ define([
       this.model.set('flag', !this.model.get('flag'))
     }
   , _renderHidden: function() {
-      var content = '<div class="cover">'
-        + (this.model.get('flag') ? '<i class="icon icon-flag"></i>' : '')
-        + '</div>'
-
+      var content = '<div class="cover"></div>'
       this.square.html(content)
+      return this._makeFlag()
+    }
+  , _makeFlag: function() {
+      var action = this.model.get('flag') ? 'addClass' : 'removeClass'
+      this.square.find('.cover')[action]('icon icon-flag')
       return this
     }
   , _renderMine: function() {

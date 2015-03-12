@@ -126,20 +126,27 @@ header
       box-sizing: border-box
       line-height: @height
       text-align: center
-      padding: 1px 0 0 3px
       font-size: 14px
       color: #f1f1f1
       position: relative
       top: 2px
       left: 2px
-      background: $darkBlue
+      background-color: $darkBlue
       position: relative
-      box-shadow: 0px 0px 3px $darkBlue
-      transition: background 0.4s
+      box-shadow: 0px 0px 3px @background-color
+      transition: all 0.4s
+    .icon-flag
+      padding: 0 0 0 3px
+      color: $darkBlue
+      border: 1px solid @color
+      background: transparent
     &:hover
       .cover
         background: $blue
-        top: 1px
+        top: 0px
+      .icon-flag
+        top: 2px
+        background: transparent
   .open-1
     color: #77B3EE
   .open-2
