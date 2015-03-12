@@ -8,6 +8,7 @@ define([
   var defaults = {
     isOpen: false,
     isMine: false,
+    flag: false,
     number: 0,
     index: 0
   }
@@ -18,7 +19,7 @@ define([
     }
   , open: function() {
       var self = this
-      if(this.get('isOpen') || this.get('isMine')) {
+      if(this.get('isOpen') || this.get('isMine') || this.get('flag')) {
         return
       }
       this.set('isOpen', true)

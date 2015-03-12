@@ -8,6 +8,7 @@ define([
     className: 'grid'
   , events: {
       'click': 'open'
+    , 'contextmenu': 'flag'
     }
   , initialize: function() {
       this.model.on('change', this.render, this)
@@ -33,8 +34,16 @@ define([
         this.model.open()
       }
     }
+  , flag: function(e) {
+      e.preventDefault()
+      this.model.set('flag', !this.model.get('flag'))
+    }
   , _renderHidden: function() {
-      this.square.html('<div class="cover"></div>')
+      var content = '<div class="cover">'
+        + (this.model.get('flag') ? '<i class="icon icon-flag"></i>' : '')
+        + '</div>'
+
+      this.square.html(content)
       return this
     }
   , _renderMine: function() {
@@ -42,7 +51,8 @@ define([
       return this
     }
   , _renderNumber: function() {
-      this.square.html(this.model.get('number') || '')
+      var number = this.model.get('number')
+      this.square.addClass('open-'+number).html(number || '')
       return this
     }
   })

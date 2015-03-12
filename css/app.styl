@@ -34,6 +34,7 @@ $gray = #777e8c
 
 .icon
   font-family: Flaticon
+  font-style: normal
   &.icon-mine::before
     content: "\e000"
   &.icon-delete::before
@@ -117,23 +118,35 @@ header
     height: @width
     text-align: center
     line-height: @height
-    .square
-      .mine
-        font-size: 12px
+  .square
+    .mine
+      font-size: 12px
+    .cover
+      width: 26px
+      height: 26px
+      box-sizing: border-box
+      line-height: @height
+      text-align: center
+      padding: 1px 0 0 3px
+      font-size: 14px
+      color: #f1f1f1
+      position: relative
+      top: 2px
+      left: 2px
+      background: $darkBlue
+      position: relative
+      box-shadow: 0px 0px 3px $darkBlue
+      transition: background 0.4s
+    &:hover
       .cover
-        width: 26px
-        height: 26px
-        position: relative
-        top: 2px
-        left: 2px
-        background: $darkBlue
-        position: relative
-        box-shadow: 0px 0px 3px $darkBlue
-        transition: background 0.4s
-      &:hover
-        .cover
-          background: $blue
-          top: 1px
+        background: $blue
+        top: 1px
+  .open-1
+    color: blue
+  .open-2
+    color: green
+  .open-3
+    color: red
 
 // magnific-popup
 .white-popup
