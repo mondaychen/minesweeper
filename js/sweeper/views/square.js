@@ -15,11 +15,14 @@ define([
   , render: function() {
       this.$el.html('<div class="square"></div>')
       this.square = this.$el.find('.square')
-      this.square.html(this.model.get('isMine') ? 'M' : this.model.get('number'))
-      if(this.model.get('isOpen')) {
-        this.square.addClass('open')
+
+      if(!this.model.get('isOpen')) {
+        return this._renderHidden()
       }
-      return this
+      if(this.model.get('isMine')) {
+        return this._renderMine()
+      }
+      return this._renderNumber()
     }
   , open: function() {
       if(this.model.get('isMine')) {
@@ -29,6 +32,18 @@ define([
       if(this.model.get('number') >= 0) {
         this.model.open()
       }
+    }
+  , _renderHidden: function() {
+      this.square.html('<div class="cover"></div>')
+      return this
+    }
+  , _renderMine: function() {
+      this.square.html('<i class="icon icon-mine"></i>')
+      return this
+    }
+  , _renderNumber: function() {
+      this.square.html(this.model.get('number') || '')
+      return this
     }
   })
 

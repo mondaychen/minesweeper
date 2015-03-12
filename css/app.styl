@@ -20,6 +20,29 @@ $pink = #ff6881
 $pinkDark = #cc547c
 $gray = #777e8c
 
+// icons
+
+@font-face
+  font-family: "Flaticon"
+  src: url("../../font/flaticon.eot")
+  src: url("../../font/flaticon.eot#iefix") format("embedded-opentype"),
+    url("../../font/flaticon.woff") format("woff"),
+    url("../../font/flaticon.ttf") format("truetype"),
+    url("../../font/flaticon.svg") format("svg");
+  font-weight: normal
+  font-style: normal
+
+.icon
+  font-family: Flaticon
+  &.icon-mine::before
+    content: "\e000"
+  &.icon-delete::before
+    content: "\e001"
+  &.icon-flag::before
+    content: "\e002"
+  &.icon-stopwatch::before
+    content: "\e003"
+
 body
   color: $gray
   font-size: 16px
@@ -81,22 +104,36 @@ header
     text-align: center
 
 .board
-  margin: 20px auto
-  border-top: $darkBlue 1px solid
-  border-left: @border-top
+  margin: 30px auto
+
 #gaming
   @extend .clearfix
+  background-color: #f1f1f1
+  box-shadow: 0 0 6px @background-color
   .grid
     float: left
     box-sizing: border-box
     width: 30px
     height: @width
-    border-right: $darkBlue 1px solid
-    border-bottom: @border-right
     text-align: center
     line-height: @height
-    .square.open
-      color: $blue
+    .square
+      .mine
+        font-size: 12px
+      .cover
+        width: 26px
+        height: 26px
+        position: relative
+        top: 2px
+        left: 2px
+        background: $darkBlue
+        position: relative
+        box-shadow: 0px 0px 3px $darkBlue
+        transition: background 0.4s
+      &:hover
+        .cover
+          background: $blue
+          top: 1px
 
 // magnific-popup
 .white-popup
