@@ -57,6 +57,9 @@ define([
     }
   , _renderMine: function() {
       this.square.html('<i class="icon icon-mine"></i>')
+      if(this.model.get('killer')) {
+        this.square.addClass('killer')
+      }
       return this
     }
   , _renderNumber: function() {

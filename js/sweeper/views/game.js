@@ -27,7 +27,7 @@ define([
     }
   , end: function() {
       this.collection.each(function(model) {
-        if(model.get('isMine')) {
+        if(model.get('isMine') && !model.get('flag')) {
           model.explode()
         }
       })
