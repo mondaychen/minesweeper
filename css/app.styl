@@ -164,6 +164,22 @@ header
     color: #aaa
   .killer
     color: #EC0000
+    animation-name: explode
+    animation-duration: 2s
+    position: relative
+    z-index: 50
+
+
+@keyframes explode {
+  from {
+    opacity: 1
+    transform: scale(1)
+  }
+  to {
+    opacity: 0
+    transform: scale(5)
+  }
+}
 
 // magnific-popup
 .white-popup

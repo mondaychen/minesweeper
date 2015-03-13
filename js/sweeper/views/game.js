@@ -41,8 +41,11 @@ define([
           model.explode()
         }
       })
-      summary.show()
       this.endGame()
+      // wait for the animation
+      _.delay(function() {
+        summary.show()
+      }, 1000)
     }
   , gameWin: function() {
       summary.show({success: true})
