@@ -12,13 +12,16 @@ define([
   , initialize: function(models, options) {
       var self = this
 
-      this.on('add', function(model) {
-        
+      this.on('change', function(model) {
+        if(model.changed.flag
+          || (model.changed.isOpen && !model.get('isMine'))) {
+          this.checkWin()
+        }
       }, this)
     }
   , setup: function(options) {
       var self = this
-      var mineCount = options.mines
+      var mineCount = this.mineCount = options.mines
       var total = options.rows * options.columns
       var minesArr = []
       for (var i = 0; i < total; i++) {
@@ -53,10 +56,27 @@ define([
         }
       }
     }
+  , checkWin: function() {
+      var unflaggedMines = 0
+      var remainingSquares = 0
+      // TODO: possible efficiency improvements
+      this.each(function(model) {
+        if(model.get('isMine') && !model.get('flag')) {
+          unflaggedMines++
+        }
+        if(!model.get('isOpen')) {
+          remainingSquares++
+        }
+      })
+      if(!unflaggedMines || this.mineCount === remainingSquares) {
+        app.trigger('game:win')
+      }
+    }
   , getModelByPosition: function(position) {
       return this.getModelByIdx(this.matrix.getIndex(position))
     }
   , getModelByIdx: function(idx) {
+      // TODO: possible efficiency improvements
       return this.find(function(model) {
         return model.get('index') === idx
       })

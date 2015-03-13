@@ -13,7 +13,7 @@ define([
       this.collection = new SquaresCollection()
     }
   , render: function() {
-      this.$el.html('')
+      this.$el.empty()
       return this
     }
   , start: function(options) {
@@ -26,18 +26,31 @@ define([
       })
       this.collection.setup(options)
       this.collection.on('game:over', function() {
-        this.end()
         app.trigger('game:over')
-      }, this)
+      })
+
+      app.on('game:over', function() {
+        self.gameOver()
+      }).on('game:win', function() {
+        self.gameWin()
+      })
     }
-  , end: function() {
+  , gameOver: function() {
       this.collection.each(function(model) {
         if(model.get('isMine') && !model.get('flag')) {
           model.explode()
         }
       })
       summary.show()
-      this.collection.off('add game:over')
+      this.endGame()
+    }
+  , gameWin: function() {
+      summary.show({success: true})
+      this.endGame()
+    }
+  , endGame: function() {
+      this.collection.off('add')
+      app.off('game:over game:win')
     }
   })
 
