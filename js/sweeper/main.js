@@ -24,7 +24,9 @@ define([
       })
     })
 
-    app.trigger('game:start', {rows: 9, columns: 9, mines: 10})
+    app.config = {rows: 9, columns: 9, mines: 10}
+
+    app.trigger('game:start')
   }
 
   return {

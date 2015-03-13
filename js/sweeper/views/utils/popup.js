@@ -46,6 +46,9 @@ define([
       , mainClass: 'mfp-fade-from-top'
       })
     }
+  , close: function() {
+      magnificPopup.close()
+    }
   })
 
   return new Popup()

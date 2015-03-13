@@ -31,12 +31,12 @@ define([
       this.overlay.bindTo(this.gameView.$el)
       this.board.append(this.overlay.render().el)
     }
-  , startGame: function(options) {
+  , startGame: function() {
       this.$el.css({
-        width: options.rows * 30 + 1 + "px"
-      , height: options.columns * 30 + 1 + "px"
+        width: app.config.rows * 30 + 1 + "px"
+      , height: app.config.columns * 30 + 1 + "px"
       })
-      this.gameView.start(options)
+      this.gameView.start(app.config)
       this.overlay.hide()
     }
   , endGame: function() {

@@ -5,17 +5,21 @@ define([
 , 'sweeper/app'
 , 'sweeper/collections/squares'
 , 'sweeper/views/square'
-], function($, _, Backbone, app, SquaresCollection, SquareView) {
+, 'sweeper/views/utils/summary'
+], function($, _, Backbone, app, SquaresCollection, SquareView, summary) {
   var MainView = Backbone.View.extend({
     id: 'gaming'
   , initialize: function() {
       this.collection = new SquaresCollection()
     }
   , render: function() {
+      this.$el.html('')
       return this
     }
   , start: function(options) {
       var self = this
+      this.render()
+      this.collection.reset()
       this.collection.on('add', function(model, collection) {
         var view = new SquareView({model: model})
         self.$el.append(view.render().el)
@@ -32,9 +36,8 @@ define([
           model.explode()
         }
       })
-      app.popup.open({
-        html: '<div class="white-popup">ends</div>'
-      })
+      summary.show()
+      this.collection.off('add game:over')
     }
   })
 
