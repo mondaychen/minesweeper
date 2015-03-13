@@ -11,6 +11,18 @@ define([
     id: 'gaming'
   , initialize: function() {
       this.collection = new SquaresCollection()
+
+      var self = this
+      this.collection.on('game:over', function() {
+        app.trigger('game:over')
+        self.gameOver()
+      }).on('game:win', function() {
+        app.trigger('game:win')
+        self.gameWin()
+      }).on('add', function(model, collection) {
+        var view = new SquareView({model: model})
+        self.$el.append(view.render().el)
+      })
     }
   , render: function() {
       this.$el.empty()
@@ -18,22 +30,10 @@ define([
     }
   , start: function(options) {
       var self = this
+      this.endGame()
       this.render()
       this.collection.reset()
-      this.collection.on('add', function(model, collection) {
-        var view = new SquareView({model: model})
-        self.$el.append(view.render().el)
-      })
       this.collection.setup(options)
-      this.collection.on('game:over', function() {
-        app.trigger('game:over')
-      })
-
-      app.on('game:over', function() {
-        self.gameOver()
-      }).on('game:win', function() {
-        self.gameWin()
-      })
     }
   , gameOver: function() {
       this.collection.each(function(model) {
@@ -52,8 +52,6 @@ define([
       this.endGame()
     }
   , endGame: function() {
-      this.collection.off('add')
-      app.off('game:over game:win')
     }
   })
 

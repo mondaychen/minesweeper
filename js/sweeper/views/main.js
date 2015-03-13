@@ -13,7 +13,7 @@ define([
       var self = this
       app.on('game:start', function(options) {
         self.startGame(options)
-      }).on('game:over', function() {
+      }).on('game:over game:win', function() {
         self.endGame()
       })
     }

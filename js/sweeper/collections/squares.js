@@ -69,7 +69,7 @@ define([
         }
       })
       if(!unflaggedMines || this.mineCount === remainingSquares) {
-        app.trigger('game:win')
+        this.trigger('game:win')
       }
     }
   , getModelByPosition: function(position) {

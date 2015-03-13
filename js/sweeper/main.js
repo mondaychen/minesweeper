@@ -6,7 +6,8 @@ define([
 , 'sweeper/app'
 , 'sweeper/views/main'
 , 'sweeper/views/utils/popup'
-], function($, _, Backbone, bowser, app, MainView, popup) {
+, 'sweeper/views/utils/menu'
+], function($, _, Backbone, bowser, app, MainView, popup, menu) {
 
   function initialize() {
     app.wrapper = $('#wrapper')
@@ -22,6 +23,12 @@ define([
       popup.open({
         html: $('#' + link.data('content-id')).html()
       })
+    })
+
+    app.menu = menu
+    $('.menu-popup-link').click(function(e) {
+      e.preventDefault()
+      menu.show()
     })
 
     app.config = {rows: 9, columns: 9, mines: 10}
