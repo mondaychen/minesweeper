@@ -33,6 +33,7 @@ define([
     }
   , open: function() {
       if(this.model.get('isMine')) {
+        this.model.set('killer', true)
         this.model.trigger('game:over')
         return
       }

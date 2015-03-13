@@ -32,6 +32,12 @@ define([
       }
       this.trigger('open')
     }
+  , explode: function() {
+      if(!this.get('isMine')) {
+        return
+      }
+      this.set('isOpen', true)
+    }
   })
 
   return Square

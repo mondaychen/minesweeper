@@ -21,6 +21,16 @@ define([
         self.$el.append(view.render().el)
       })
       this.collection.setup(options)
+      this.collection.on('game:over', function() {
+        this.end()
+      }, this)
+    }
+  , end: function() {
+      this.collection.each(function(model) {
+        if(model.get('isMine')) {
+          model.explode()
+        }
+      })
     }
   })
 
