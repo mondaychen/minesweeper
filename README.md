@@ -4,7 +4,7 @@
 
 Rules:
 
-* What?! You don't know the rules of Minesweeper?
+* Seriously? You need the rules of a Minesweeper game explained here?
 
 ## Development
 
@@ -19,4 +19,4 @@ bower install
 grunt
 ```
 
-If you want to change any JavaScript or CSS codes, run `grunt watch` in advance to make the changes work.
+If you want to change any JavaScript or CSS codes, run `grunt watch` in advance to make the changes work. The `grunt` command also starts the watching process.
