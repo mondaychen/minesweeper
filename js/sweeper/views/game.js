@@ -23,6 +23,7 @@ define([
       this.collection.setup(options)
       this.collection.on('game:over', function() {
         this.end()
+        app.trigger('game:over')
       }, this)
     }
   , end: function() {

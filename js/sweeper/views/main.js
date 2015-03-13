@@ -4,7 +4,8 @@ define([
 , 'backbone'
 , 'sweeper/app'
 , 'sweeper/views/game'
-], function($, _, Backbone, app, GameView) {
+, 'sweeper/views/overlay'
+], function($, _, Backbone, app, GameView, Overlay) {
   var MainView = Backbone.View.extend({
     id: 'main'
   , template: $('#tmpl-main').html()
@@ -12,6 +13,8 @@ define([
       var self = this
       app.on('game:start', function(options) {
         self.startGame(options)
+      }).on('game:over', function() {
+        self.endGame()
       })
     }
   , render: function() {
@@ -24,6 +27,9 @@ define([
   , _initGame: function() {
       this.gameView = new GameView()
       this.board.html(this.gameView.render().el)
+      this.overlay = new Overlay()
+      this.overlay.bindTo(this.gameView.$el)
+      this.board.append(this.overlay.render().el)
     }
   , startGame: function(options) {
       this.$el.css({
@@ -31,6 +37,10 @@ define([
       , height: options.columns * 30 + 1 + "px"
       })
       this.gameView.start(options)
+      this.overlay.hide()
+    }
+  , endGame: function() {
+      this.overlay.show()
     }
   })
 
