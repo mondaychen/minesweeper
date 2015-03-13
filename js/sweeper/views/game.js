@@ -32,6 +32,9 @@ define([
           model.explode()
         }
       })
+      app.popup.open({
+        html: '<div class="white-popup">ends</div>'
+      })
     }
   })
 
