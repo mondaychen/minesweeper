@@ -31,7 +31,7 @@ define([
       menu.show()
     })
 
-    app.config = {rows: 9, columns: 9, mines: 3}
+    app.config = {rows: 9, columns: 9, mines: 10}
 
     app.trigger('game:start')
   }
