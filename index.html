@@ -35,9 +35,16 @@
 
   <script id="tmpl-menu" type="text/template">
     <div class="menu white-popup">
+      <h4>Choose difficulty:</h4>
+      <ul class="level">
+        <li data-level="easy" data-rows="9" data-columns="9" data-mines="10">Easy (9&times;9 with 10 mines)</li>
+        <li data-level="medium" data-rows="16" data-columns="16" data-mines="40">Medium (16&times;16 with 40 mines)</li>
+        <li data-level="hard" data-rows="16" data-columns="30" data-mines="99">Hard (16&times;30 with 99 mines)</li>
+      </ul>
       <button class="retry">Restart game</button>
     </div>
   </script>
+
 
   <script id="tmpl-playing-summary" type="text/template">
     <div class="summary white-popup">

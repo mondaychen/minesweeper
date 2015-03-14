@@ -110,6 +110,7 @@ header
   @extend .clearfix
   background-color: #f1f1f1
   box-shadow: 0 0 6px @background-color
+  user-select: none
   .grid
     float: left
     box-sizing: border-box
@@ -180,6 +181,22 @@ header
     transform: scale(5)
   }
 }
+
+.menu
+  .level
+    li
+      list-style: none
+      box-sizing: border-box
+      padding: 15px
+      margin: 10px 0
+      cursor: pointer
+      border: 1px solid transparent
+      &:hover
+      &.selected
+        border: 1px solid $blue
+      &:hover
+        color: $blue
+  
 
 // magnific-popup
 .white-popup

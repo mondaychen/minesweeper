@@ -6,7 +6,7 @@
 
   Matrix.prototype = _.extend(Matrix.prototype, {
     getPosition: function(index) {
-      var columns = index % this.rows
+      var columns = index % this.columns
       var rows = (index - columns) / this.columns
       return [rows, columns]
     }
@@ -24,10 +24,10 @@
       if(j > 0) {
         rtn.push([i, j - 1])
       }
-      if(i < this.columns - 1) {
+      if(i < this.rows - 1) {
         rtn.push([i + 1, j])
       }
-      if(j < this.rows - 1) {
+      if(j < this.columns - 1) {
         rtn.push([i, j + 1])
       }
       return rtn
@@ -38,13 +38,13 @@
       if(i > 0 && j > 0) {
         rtn.push([i - 1, j - 1])
       }
-      if(i < this.columns - 1 && j > 0) {
+      if(i < this.rows - 1 && j > 0) {
         rtn.push([i + 1, j - 1])
       }
-      if(i < this.columns - 1 && j < this.rows - 1) {
+      if(i < this.rows - 1 && j < this.columns - 1) {
         rtn.push([i + 1, j + 1])
       }
-      if(i > 0 && j < this.rows - 1) {
+      if(i > 0 && j < this.columns - 1) {
         rtn.push([i - 1, j + 1])
       }
       return rtn
@@ -56,10 +56,10 @@
       return this.getNeighbour8(this.getPosition(idx))
     }
   , validate: function(i, j) {
-      if (i < 0 || i >= this.columns) {
+      if (i < 0 || i >= this.rows) {
         throw new Error("row index " + i + " out of bounds");
       }
-      if (j < 0 || j >= this.rows) {
+      if (j < 0 || j >= this.column) {
         throw new Error("column index " + j + " out of bounds");
       }
     }

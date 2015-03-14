@@ -33,8 +33,8 @@ define([
     }
   , startGame: function() {
       this.$el.css({
-        width: app.config.rows * 30 + 1 + "px"
-      , height: app.config.columns * 30 + 1 + "px"
+        width: app.config.columns * 30 + 1 + "px"
+      , height: app.config.rows * 30 + 1 + "px"
       })
       this.gameView.start(app.config)
       this.overlay.hide()
