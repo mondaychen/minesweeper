@@ -19,7 +19,7 @@ define([
   _.extend(Summary.prototype, {
     show: function(options) {
       app.popup.open({
-        html: this.template(_.extend(defaultOptions, options))
+        html: this.template(_.defaults(options || {}, defaultOptions))
       })
     }
   })

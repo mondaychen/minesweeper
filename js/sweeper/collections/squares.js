@@ -57,18 +57,25 @@ define([
       }
     }
   , checkWin: function() {
-      var unflaggedMines = 0
+      var flaggedMines = 0
       var remainingSquares = 0
+      var falsePositive = false
       // TODO: possible efficiency improvements
       this.each(function(model) {
-        if(model.get('isMine') && !model.get('flag')) {
-          unflaggedMines++
+        if(model.get('isMine') && model.get('flag')) {
+          flaggedMines++
+        }
+        if(!model.get('isMine') && model.get('flag')) {
+          falsePositive = true
         }
         if(!model.get('isOpen')) {
           remainingSquares++
         }
       })
-      if(!unflaggedMines || this.mineCount === remainingSquares) {
+      if(falsePositive) {
+        return
+      }
+      if(this.mineCount === flaggedMines || this.mineCount === remainingSquares) {
         this.trigger('game:win')
       }
     }
