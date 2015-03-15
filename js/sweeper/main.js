@@ -29,9 +29,9 @@ define([
     })
 
     var _gamelevels = {
-      easy: {rows: 9, columns: 9, mines: 10, name: 'Easy'}
-    , medium: {rows: 16, columns: 16, mines: 40, name: 'Medium'}
-    , hard: {rows: 16, columns: 30, mines: 99, name: 'Hard'}
+      easy: {rows: 9, columns: 9, mines: 10, name: 'Beginner'}
+    , medium: {rows: 16, columns: 16, mines: 40, name: 'Intermediate'}
+    , hard: {rows: 16, columns: 30, mines: 99, name: 'Expert'}
     }
 
     app.levels = {
