@@ -50,7 +50,10 @@ define([
       }, 1000)
     }
   , gameWin: function() {
-      summary.show({success: true})
+      summary.show({
+        success: true
+      , time: app.timer.time()
+      })
       this.endGame()
     }
   , endGame: function() {

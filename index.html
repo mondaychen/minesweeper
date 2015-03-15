@@ -55,7 +55,7 @@
   <script id="tmpl-playing-summary" type="text/template">
     <div class="summary white-popup">
       <% if(success) { %>
-        <p>Good job!</p>
+        <p>Good job! You beat the level in <%= time %> second<%= time > 1 ? "s" : "" %>.</p>
         <button class="retry">Another game</button>
       <% } else { %>
         <p>You failed.</p>
