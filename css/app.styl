@@ -105,7 +105,7 @@ header
     text-align: center
 
 .board
-  margin: 30px auto
+  margin: 30px auto 10px
 #gaming
   @extend .clearfix
   background-color: #f1f1f1
@@ -181,6 +181,18 @@ header
     transform: scale(5)
   }
 }
+
+.status
+  .icon
+    line-height: 24px
+    font-size: 20px
+    width: 30px
+    text-align: center
+    &::before
+      font-size: 24px
+      padding-right: 6px
+  .mines-count
+    float: right
 
 .menu
   .level

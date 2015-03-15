@@ -22,6 +22,8 @@ define([
       }).on('add', function(model, collection) {
         var view = new SquareView({model: model})
         self.$el.append(view.render().el)
+      }).on('game:update_flags', function(data) {
+        self.trigger('game:update_flags', data)
       })
     }
   , render: function() {

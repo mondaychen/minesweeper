@@ -10,12 +10,13 @@ define([
   var SquaresCollection = Backbone.Collection.extend({
     model: SquareModel
   , initialize: function(models, options) {
-      var self = this
-
       this.on('change', function(model) {
         if(model.changed.flag
           || (model.changed.isOpen && !model.get('isMine'))) {
           this.checkWin()
+        }
+        if('flag' in model.changed) {
+          this.trigger('game:update_flags', model.changed.flag ? -1 : 1)
         }
       }, this)
     }
