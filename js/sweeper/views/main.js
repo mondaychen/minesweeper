@@ -6,28 +6,6 @@ define([
 , 'sweeper/views/game'
 , 'sweeper/views/overlay'
 ], function($, _, Backbone, app, GameView, Overlay) {
-  var Timer = function() {
-    this.stopwatch = 0
-  }
-  _.extend(Timer.prototype, Backbone.Events, {
-    start: function() {
-      this.stopwatch = 0
-      this._setInterval()
-    }
-  , stop: function() {
-      this._clearInterval()
-    }
-  , _setInterval: function() {
-      var self = this
-      this.timeoutID = setInterval(function() {
-        self.stopwatch++
-        self.trigger('tick', self.stopwatch)
-      }, 1000)
-    }
-  , _clearInterval: function() {
-      clearInterval(this.timeoutID)
-    }
-  })
 
   var MainView = Backbone.View.extend({
     id: 'main'
@@ -56,7 +34,6 @@ define([
       this.overlay.bindTo(this.gameView.$el)
       this.board.append(this.overlay.render().el)
 
-      app.timer = new Timer()
       app.timer.on('tick', function(stopwatch) {
         this.timerBox.text(stopwatch)
       }, this)
