@@ -28,13 +28,36 @@ define([
       })
     })
 
+    var _gamelevels = {
+      easy: {rows: 9, columns: 9, mines: 10, name: 'Easy'}
+    , medium: {rows: 16, columns: 16, mines: 40, name: 'Medium'}
+    , hard: {rows: 16, columns: 30, mines: 99, name: 'Hard'}
+    }
+
+    app.levels = {
+      all: function() {
+        return _.clone(_gamelevels)
+      }
+    , get: function(key) {
+        return _.clone(_gamelevels[key])
+      }
+    , _current: 'easy'
+    , use: function(key) {
+        this._current = key
+        app.config = this.get(key)
+      }
+    , currentLevel: function() {
+        return this._current
+      }
+    }
+    app.levels.use('easy')
+
     app.menu = menu
     $('.menu-popup-link').click(function(e) {
       e.preventDefault()
       menu.show()
     })
 
-    app.config = {rows: 9, columns: 9, mines: 10, level: 'easy'}
     app.trigger('game:start')
   }
 

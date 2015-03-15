@@ -18,6 +18,7 @@ define([
       return this.stopwatch
     }
   , _setInterval: function() {
+      clearInterval(this.timeoutID)
       var self = this
       this.timeoutID = setInterval(function() {
         self.stopwatch++
