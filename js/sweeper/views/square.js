@@ -8,11 +8,13 @@ define([
     className: 'grid'
   , events: {
       'MB_click': 'open'
-    , 'MB_move': 'hover'
+    , 'MB_enter': 'enter'
+    , 'MB_leave': 'leave'
     , 'contextmenu': 'preventDefault'
     }
   , initialize: function() {
       this.model.on('change', this.update, this)
+        .on('preview', this._preview, this)
     }
   , render: function() {
       this.$el.html('<div class="square"></div>')
@@ -42,6 +44,20 @@ define([
       } else if(button === 'both') {
         this.model.openNeighbours()
       }
+    }
+  , enter: function(e, button) {
+      if(button === 'left' || button === 'right') {
+        this.square.addClass('hover')
+      } else if(button === 'both') {
+        _.invoke(this.model.getNeighbour8(), 'trigger', 'preview')
+        this._preview()
+      }
+    }
+  , leave: function() {
+      $('.square').removeClass('hover preview')
+    }
+  , _preview: function() {
+      this.square.addClass('preview')
     }
   , preventDefault: function(e) {
       e.preventDefault()
