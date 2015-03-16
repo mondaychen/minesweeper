@@ -7,7 +7,7 @@ define([
   var MainView = Backbone.View.extend({
     className: 'grid'
   , events: {
-      'click': 'open'
+      'MB_click': 'open'
     , 'contextmenu': 'flag'
     }
   , initialize: function() {
@@ -31,19 +31,20 @@ define([
       }
       return this.render()
     }
-  , open: function() {
-      if(this.model.get('isMine')) {
-        this.model.set('killer', true)
-        this.model.trigger('game:over')
-        return
-      }
-      if(this.model.get('number') >= 0) {
-        this.model.open()
+  , open: function(e, button) {
+      if(button === 'left') {
+        if(this.model.get('number') >= 0) {
+          this.model.open()
+        }
+      } else if(button === 'right'){
+        this.model.set('flag', !this.model.get('flag'))
+      } else if(button === 'both') {
+        console.log('both')
+        this.model.openNeighbours()
       }
     }
   , flag: function(e) {
       e.preventDefault()
-      this.model.set('flag', !this.model.get('flag'))
     }
   , _renderHidden: function() {
       var content = '<div class="cover"></div>'

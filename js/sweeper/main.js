@@ -4,16 +4,18 @@ define([
 , 'backbone'
 , 'bowser'
 , 'mod/timer'
+, 'mod/mouse_button'
 , 'sweeper/app'
 , 'sweeper/views/main'
 , 'sweeper/views/utils/popup'
 , 'sweeper/views/utils/menu'
-], function($, _, Backbone, bowser, Timer, app, MainView, popup, menu) {
+], function($, _, Backbone, bowser, Timer, mouseButton, app, MainView, popup, menu) {
 
   function initialize() {
     app.wrapper = $('#wrapper')
 
     app.timer = new Timer()
+    app.mouse = mouseButton
 
     var mainView = new MainView()
     app.wrapper.html(mainView.render().el)
