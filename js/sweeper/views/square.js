@@ -56,6 +56,7 @@ define([
       }
     }
   , leave: function() {
+      // TODO: should find a better way to do this
       $('.square').removeClass('hover preview')
     }
   , _preview: function() {
