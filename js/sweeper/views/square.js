@@ -8,7 +8,8 @@ define([
     className: 'grid'
   , events: {
       'MB_click': 'open'
-    , 'contextmenu': 'flag'
+    , 'MB_move': 'hover'
+    , 'contextmenu': 'preventDefault'
     }
   , initialize: function() {
       this.model.on('change', this.update, this)
@@ -39,11 +40,10 @@ define([
       } else if(button === 'right'){
         this.model.set('flag', !this.model.get('flag'))
       } else if(button === 'both') {
-        console.log('both')
         this.model.openNeighbours()
       }
     }
-  , flag: function(e) {
+  , preventDefault: function(e) {
       e.preventDefault()
     }
   , _renderHidden: function() {

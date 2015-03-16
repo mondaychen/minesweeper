@@ -47,7 +47,6 @@ define([
         if(model.get('flag')) {console.log(model)}
         return model.get('flag')
       }).length || 0
-      console.log(flagCount, this.attributes)
       if(flagCount === this.get('number')) {
         _.invoke(neighbours, 'open')
       }
