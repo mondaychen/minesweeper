@@ -44,7 +44,6 @@ define([
       }
       var neighbours = this.getNeighbour8()
       var flagCount = _.filter(neighbours, function(model) {
-        if(model.get('flag')) {console.log(model)}
         return model.get('flag')
       }).length || 0
       if(flagCount === this.get('number')) {
