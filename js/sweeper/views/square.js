@@ -40,7 +40,9 @@ define([
           this.model.open()
         }
       } else if(button === 'right'){
-        this.model.set('flag', !this.model.get('flag'))
+        if(!this.model.get('isOpen')) {
+          this.model.set('flag', !this.model.get('flag'))
+        }
       } else if(button === 'both') {
         this.model.openNeighbours()
       }
