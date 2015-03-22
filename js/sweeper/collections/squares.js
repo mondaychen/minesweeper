@@ -110,13 +110,7 @@ define([
       }
     }
   , getModelByPosition: function(position) {
-      return this.getModelByIdx(this.matrix.getIndex(position))
-    }
-  , getModelByIdx: function(idx) {
-      // TODO: possible efficiency improvements
-      return this.find(function(model) {
-        return model.get('index') === idx
-      })
+      return this.get(this.matrix.getIndex(position))
     }
   })
 
