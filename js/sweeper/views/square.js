@@ -16,6 +16,7 @@ define([
   , initialize: function() {
       this.model.on('change', this.update, this)
         .on('preview', this._preview, this)
+      _.bindAll(this, '_open')
     }
   , render: function() {
       this.$el.html('<div class="square"></div>')
@@ -37,15 +38,23 @@ define([
     }
   , open: function(e, button) {
       if(button === 'left') {
-        if(this.model.get('number') >= 0) {
-          this.model.open()
+        if(!app.firstClick) {
+          app.trigger('first_click', this.model.get('index'), this._open)
+          app.firstClick = true
+          return
         }
+        this._open()
       } else if(button === 'right'){
         if(!this.model.get('isOpen')) {
           this.model.set('flag', !this.model.get('flag'))
         }
       } else if(button === 'both') {
         this._openNeighbours()
+      }
+    }
+  , _open: function() {
+      if(this.model.get('number') >= 0) {
+        this.model.open()
       }
     }
   , _openNeighbours: function() {

@@ -11,6 +11,10 @@ define([
     model: SquareModel
   , initialize: function(models, options) {
       this.on('change', function(model) {
+        // ignore 'change' caused by game initialization
+        if('number' in model.changed) {
+          return
+        }
         if(model.changed.flag
           || (model.changed.isOpen && !model.get('isMine'))) {
           this.checkWin()
@@ -19,26 +23,51 @@ define([
           this.trigger('game:update_flags', model.changed.flag ? -1 : 1)
         }
       }, this)
+      // set up mine map after the first click
+      app.on('first_click', function(clicked, callback) {
+        this._setup(clicked, callback)
+      }, this)
     }
   , setup: function(options) {
-      var self = this
-      var mineCount = this.mineCount = options.mines
+      this.mineCount = options.mines
+      this.matrix = new Matrix(options.rows, options.columns)
       var total = options.rows * options.columns
+      for(var i = 0; i < total; i++) {
+        this.add({
+          index: i
+        })
+      }
+    }
+  // after first click
+  , _setup: function(clicked, callback) {
+      var self = this
       var minesArr = []
-      for (var i = 0; i < total; i++) {
-        minesArr.push(i < mineCount)
+      // randomly make the map, true for mine
+      for (var i = 0; i < this.length; i++) {
+        minesArr.push(i < this.mineCount)
       }
       minesArr = _.shuffle(minesArr)
-      var matrix = this.matrix = new Matrix(options.rows, options.columns)
+      if(minesArr[clicked]) {
+        var i = 0
+        // find an innocent scapegoat to replace the mine
+        var scapegoat = _.random(1, this.length - this.mineCount)
+        while(scapegoat > 0) {
+          if(!minesArr[i]) {
+            scapegoat--
+          }
+          i++
+        }
+        minesArr[i-1] = true
+        minesArr[clicked] = false
+      }
       this.indicate(minesArr)
       _.each(this.minesMap, function(value, idx) {
-        self.add({
-          index: idx
-        , number: _.isNumber(value) ? value : ''
+        self.get(idx).set({
+          number: _.isNumber(value) ? value : ''
         , isMine: value == 'M'
         })
-        self.percolator
       })
+      callback()
     }
   , indicate: function(minesArr) {
       var self = this

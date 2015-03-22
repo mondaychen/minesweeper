@@ -9,12 +9,13 @@ define([
     isOpen: false,
     isMine: false,
     flag: false,
-    number: 0,
-    index: 0
+    number: -1,
+    index: -1
   }
 
   var Square = Backbone.Model.extend({
-    initialize: function(attrs, options) {
+    idAttribute: 'index'
+  , initialize: function(attrs, options) {
       this.set(_.extend(defaults, attrs))
     }
   , open: function(safeMode) {

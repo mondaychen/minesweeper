@@ -36,6 +36,7 @@ define([
       this.render()
       this.collection.reset()
       this.collection.setup(options)
+      app.firstClick = false
     }
   , gameOver: function() {
       this.collection.each(function(model) {
