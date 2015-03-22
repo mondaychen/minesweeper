@@ -10,6 +10,7 @@ define([
       'MB_click': 'open'
     , 'MB_enter': 'enter'
     , 'MB_leave': 'leave'
+    , 'dblclick': '_openNeighbours'
     , 'contextmenu': 'preventDefault'
     }
   , initialize: function() {
@@ -44,8 +45,11 @@ define([
           this.model.set('flag', !this.model.get('flag'))
         }
       } else if(button === 'both') {
-        this.model.openNeighbours()
+        this._openNeighbours()
       }
+    }
+  , _openNeighbours: function() {
+      this.model.openNeighbours()
     }
   , enter: function(e, button) {
       if(button === 'left' || button === 'right') {
