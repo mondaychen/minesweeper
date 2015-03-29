@@ -41,13 +41,16 @@ define([
         var count = this.minesCountBox.text() | 0
         this.minesCountBox.text(count+flags)
       }, this)
+
+      app.on('first_click', function() {
+        app.timer.start()
+      })
     }
   , startGame: function() {
       this.$el.width(app.config.columns * 30 + 1)
       this.gameView.start(app.config)
       this.overlay.hide()
 
-      app.timer.start()
       this.timerBox.text(0)
       this.minesCountBox.text(app.config.mines)
     }
