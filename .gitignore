@@ -1,7 +1,5 @@
 *.DS_Store
 *.swp
-/css/*.css
-/dist/*
 /bower_components/*
 /node_modules/*
 /tools/*
