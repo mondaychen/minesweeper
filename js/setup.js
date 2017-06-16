@@ -6,7 +6,8 @@ require.config({
   }
 })
 
-define('jquery', './jquery/dist/jquery.min.js')
+define('jquery-src', 'jquery/dist/jquery.min.js')
+define('jquery', ['jquery-src'], function() { return $ })
 define('underscore', 'underscore/underscore.js')
 define('backbone', ['jquery', 'underscore'],
   'backbone/backbone.js')

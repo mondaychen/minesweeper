@@ -1,5 +1,5 @@
 {
-  "name": "Monday's Minesweeper",
+  "name": "minesweeper",
   "version": "0.0.1",
   "description": "A html version of the classic game \"Minesweeper\"",
   "author": {
@@ -17,7 +17,9 @@
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-stylus": "~0.10.0",
-    "grunt-ozjs": "~0.4.2"
+    "grunt-ozjs": "~0.4.2",
+    "ozjs": "^2.6.4",
+    "ozma": "^1.9.2"
   },
   "dependencies": {
   },
