@@ -15,14 +15,13 @@
   ],
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-stylus": "~0.10.0",
+    "grunt-contrib-watch": "~0.5.3",
     "grunt-ozjs": "~0.4.2",
     "ozjs": "^2.6.4",
     "ozma": "^1.9.2"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "keywords": [
     "html5",
     "css3",

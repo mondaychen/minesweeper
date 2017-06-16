@@ -16,7 +16,7 @@ Rules:
 ```
 npm install
 bower install
-grunt
+grunt build
 ```
 
 If you want to change any JavaScript or CSS codes, run `grunt watch` in advance to make the changes work. The `grunt` command also starts the watching process.
